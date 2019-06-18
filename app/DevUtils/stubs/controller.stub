@@ -1,0 +1,94 @@
+<?php
+
+namespace {CONTROLLER_NAMESPACE};
+
+use {MODEL_NAMESPACE};
+/**
+ * Class {CONTROLLER_NAME}
+ * @package {CONTROLLER_NAMESPACE}
+ */
+class {CONTROLLER_NAME} extends Controller
+{
+
+    /**
+     * Pagination Limit
+     */
+    protected $paginationLimit = {PAGINATION_LIMIT};
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        ${PLURAL_VAR_NAME} = {MODEL_NAME}::paginate($this->paginationLimit);
+
+        return view('{VIEW_PATH}.index', compact('{PLURAL_VAR_NAME}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('{VIEW_PATH}.create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function store()
+    {
+        {MODEL_NAME}::create($request->all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function show($id)
+    {
+        ${SINGULAR_VAR_NAME} = {MODEL_NAME}::findOrFail($id);
+
+        return view('{VIEW_PATH}.show', compact('{SINGULAR_VAR_NAME}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        ${SINGULAR_VAR_NAME} = {MODEL_NAME}::findOrFail($id);
+
+       return view('{VIEW_PATH}.edit', compact('{SINGULAR_VAR_NAME}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+         ${SINGULAR_VAR_NAME} = {MODEL_NAME}::findOrFail($id);
+         ${SINGULAR_VAR_NAME}->update($request->all());
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        ${SINGULAR_VAR_NAME} = {MODEL_NAME}::findOrFail($id);
+        ${SINGULAR_VAR_NAME}->delete();
+    }
+
+}

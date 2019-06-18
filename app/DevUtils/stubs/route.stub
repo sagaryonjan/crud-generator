@@ -1,0 +1,30 @@
+
+Route::group([
+    'prefix' => '{URL}',
+    'as' => '{ROUTE}.'
+], function ($router) {
+    $router->get('/', [
+        'as' => 'index',
+        'uses' => '{CONTROLLER_NAME}Controller@index'
+    ]);
+    $router->get('/create', [
+        'as' => 'create',
+        'uses' => '{CONTROLLER_NAME}Controller@create'
+    ]);
+    $router->post('/create', [
+        'as' => 'store',
+        'uses' => '{CONTROLLER_NAME}Controller@store'
+    ]);
+    $router->get('/edit/{id}', [
+        'as' => 'edit',
+        'uses' => '{CONTROLLER_NAME}Controller@edit'
+    ]);
+    $router->post('/edit/{id}', [
+        'as' => 'update',
+        'uses' => '{CONTROLLER_NAME}Controller@update'
+    ]);
+    $router->delete('/delete/{id}', [
+        'as' => 'delete',
+        'uses' => '{CONTROLLER_NAME}Controller@delete'
+    ]);
+});
