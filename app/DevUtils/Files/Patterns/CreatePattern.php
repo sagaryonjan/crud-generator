@@ -61,18 +61,19 @@ class CreatePattern
 
     public function wrapper($details)
     {
+        $tab = "\t\t\t\t\t\t";
         $html = '<div class="form-group  row">'.PHP_EOL;
-            $html .= '\t'.'<label class="col-sm-2 col-form-label">';
+            $html .= $tab.'<label class="col-sm-2 col-form-label">';
             $html .= $details['title'];
-            $html .= '</label>\n';
-            $html .= '<div class="col-sm-10">'.PHP_EOL;
+            $html .= '</label>'.PHP_EOL;
+            $html .= $tab."\t".'<div class="col-sm-10">'.PHP_EOL;
                 $type = $this->inputTypes[$details['type']];
                 unset($details['title']);
                 unset($details['type']);
-                $html .= Form::{$type}(null, $details).'\n';
-            $html .='</div>\n';
-        $html .='</div>\n';
-        $html .='<div class="hr-line-dashed"></div>';
+                $html .= $tab."\t\t".Form::{$type}(null, $details).PHP_EOL;
+            $html .= $tab."\t".'</div>'.PHP_EOL;
+        $html .= $tab.'</div>'.PHP_EOL;
+        $html .= $tab.'<div class="hr-line-dashed"></div>';
 
         return $html;
     }

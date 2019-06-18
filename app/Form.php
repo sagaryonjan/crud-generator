@@ -28,11 +28,11 @@ class Form {
 
 
         if($type == 'textarea') {
-            $tag .= $type;
-            $attributes['value'] = $value;
+            $tag .= $type.' ';
         } else {
-            $tag .= 'input';
+            $tag .= 'input ';
             $attributes['type'] = $type;
+            $attributes['value'] = $value;
         }
         $dataAttributes = array_map(function ($value, $key) {
             return $key . '="' . $value . '"';
